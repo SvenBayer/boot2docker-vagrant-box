@@ -1,4 +1,8 @@
 
+
+## 27/04/2015 (v1.6.0)
+- Moving to [docker v1.6.0](https://github.com/docker/docker/blob/master/CHANGELOG.md#160-2015-04-07) + [boot2docker v1.6.0](https://github.com/boot2docker/boot2docker/releases/tag/v1.6.0) 
+
 ## 15/02/2015 (v1.5.0)
 - GH-6 : Adding a private id to the default private network in order to permit bypass at user level
 - Moving to [docker v1.5.0](https://github.com/docker/docker/blob/master/CHANGELOG.md#150-2015-02-10) + [boot2docker v1.5.0](https://github.com/boot2docker/boot2docker/releases/tag/v1.5.0) 
