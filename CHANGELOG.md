@@ -1,7 +1,14 @@
 
+## Not released (dduportal-1.6.2)
+- Moving boot2docker to 1.6.2 : https://github.com/boot2docker/boot2docker/releases/tag/v1.6.2
 
-## 27/04/2015 (v1.6.0)
-- Moving to [docker v1.6.0](https://github.com/docker/docker/blob/master/CHANGELOG.md#160-2015-04-07) + [boot2docker v1.6.0](https://github.com/boot2docker/boot2docker/releases/tag/v1.6.0) 
+## 13/05/2015 (dduportal-1.6.1)
+- Moving boot2docker to 1.6.1 : https://github.com/boot2docker/boot2docker/releases/tag/v1.6.1
+- GH-10 : Making NFS working, environment variable powered, documentation added
+- Corrections around the Makefile for building yourself
+
+## 04/05/2015 (dduportal-1.6.0)
+- Moving boot2docker to 1.6.0 : https://github.com/boot2docker/boot2docker/releases/tag/v1.6.0
 
 ## 15/02/2015 (v1.5.0)
 - GH-6 : Adding a private id to the default private network in order to permit bypass at user level
