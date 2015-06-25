@@ -9,11 +9,15 @@ NEW_ISO_DIR="/tmp/newiso"
 B2D_ISO_PATH="/tmp/boot2docker-orig.iso"
 NEW_B2D_ISO_PATH="/tmp/boot2docker-vagrant.iso"
 
+# START AMU 20150625 : cheating to get boot2docker iso
+curl -L -o "${B2D_ISO_PATH}" "${B2D_ISO_URL}"
+# END AMU 20150625
+
 rm -rf "${MNT_TMP_DIR}" "${EXTRACT_DIR}" "${NEW_ISO_DIR}"
 mkdir -p "${NEW_ISO_DIR}" "${EXTRACT_DIR}" "${MNT_TMP_DIR}" /mnt/syslinux
 
 # Install some custom tools on boot2docker
-# Note that even if the install worked, tce-loa return exit code to 1...
+# Note that even if the install worked, tce-load return exit code to 1...
 su -c "tce-load -w -i mkisofs-tools" docker || :
 su -c "tce-load -w -i compiletc" docker || :
 curl -L -o /tmp/syslinux.tcz http://tinycorelinux.net/6.x/x86/tcz/syslinux.tcz

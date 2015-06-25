@@ -13,6 +13,9 @@
     "provisioners": [
         {
             "type": "shell",
+            "environment_vars": [
+                "B2D_ISO_URL={{user `B2D_ISO_URL`}}"
+            ],
             "scripts": [
                 "scripts/build-custom-iso.sh",
                 "scripts/b2d-provision.sh"
@@ -27,7 +30,7 @@
                 ["modifyvm","{{.Name}}","--memory","1536"],
                 ["modifyvm","{{.Name}}","--nictype1","virtio"]
             ],
-            "headless": false,
+            "headless": true,
             "iso_url": "{{user `B2D_ISO_URL`}}",
             "iso_checksum_type": "md5",
             "iso_checksum": "{{user `B2D_ISO_CHECKSUM`}}",
