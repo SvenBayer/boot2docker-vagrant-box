@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  CURRENT_DIR = File.expand_path(File.dirname(__FILE__))
+  CURRENT_DIR = "/vagrant"
 
   config.ssh.shell = "sh"
   config.ssh.username = "docker"
