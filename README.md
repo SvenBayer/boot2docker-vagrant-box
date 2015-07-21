@@ -7,12 +7,12 @@ If you work solely with Docker, this box lets you keep your Vagrant workflow and
 
 ## Usage
 
-The box is available on [Hashicrop's Atlas](https://atlas.hashicorp.com/dduportal/boxes/boot2docker), making it very easy to use it:
+The box is available on [Hashicrop's Atlas](https://atlas.hashicorp.com/AlbanMontaigu/boxes/boot2docker), making it very easy to use it:
 
-    $ vagrant init dduportal/boot2docker
+    $ vagrant init AlbanMontaigu/boot2docker
     $ vagrant up
 
-If you want the actual box source file, you can download it from the [tags page](https://github.com/dduportal/boot2docker-vagrant-box/tags).
+If you want the actual box source file, you can download it from the [tags page](https://github.com/AlbanMontaigu/boot2docker-vagrant-box/tags).
 
 On OS X, to use the docker client, follow the directions here: http://docs.docker.io/installation/mac/#docker-os-x-client (you'll need to export `DOCKER_HOST`). You should then be able to to run `docker version` from the host. [Homebrew](http://brew.sh) can also a good installation medium with ```brew update && brew install docker```
 
@@ -71,17 +71,11 @@ To build the box, first install the following prerequisites:
   * [Make as workflow engine](http://www.gnu.org/software/make/)
   * [Packer as vagrant basebox builder](http://www.packer.io) (at least version 0.7.5)
   * [VirtualBox](http://www.virtualbox.org) (at least version 4.3.28) or [Parallels Desktop for Mac](http://www.parallels.com/products/desktop/) (version 9 or higher) [VMware is not implemented yet]
-  * [Parallels Virtualization SDK for Mac](http://www.parallels.com/download/pvsdk/) (only if you want to build the box for Parallels)
   * [curl for downloading things](http://curl.haxx.se)
   * [bats for testing](https://github.com/sstephenson/bats)
 
 Then run this command to build the box for VirtualBox provider:
 
 ```
-make virtualbox
-```
-or this one to build the box for Parallels provider:
-
-```
-make parallels
+make build
 ```
