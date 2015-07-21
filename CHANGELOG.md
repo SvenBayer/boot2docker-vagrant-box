@@ -1,5 +1,5 @@
 
-## 25/06/2015
+## 26/06/2015 (dduportal-1.7.0)
 - Moving boot2docker to 1.7.0 : https://github.com/boot2docker/boot2docker/releases/tag/v1.7.0
 
 ## 28/05/2015 (dduportal-1.6.2)
