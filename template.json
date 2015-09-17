@@ -6,9 +6,9 @@
     "variables": {
         "ATLAS_USERNAME": "{{env `ATLAS_USERNAME`}}",
         "ATLAS_NAME": "{{env `ATLAS_NAME`}}",
-        "B2D_ISO_VERSION": "1.8.1",
-        "B2D_ISO_URL": "https://github.com/boot2docker/boot2docker/releases/download/v1.8.1/boot2docker.iso",
-        "B2D_ISO_CHECKSUM": "7e231d3c33e08f08b604fdc9a557b64b"
+        "B2D_ISO_VERSION": "1.8.2",
+        "B2D_ISO_URL": "https://github.com/boot2docker/boot2docker/releases/download/v1.8.2/boot2docker.iso",
+        "B2D_ISO_CHECKSUM": "29839aeef97758e142eae4c2fd10890b"
     },
     "provisioners": [
         {

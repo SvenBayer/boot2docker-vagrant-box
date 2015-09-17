@@ -1,3 +1,6 @@
+## 17/09/2015
+- Moving boot2docker to 1.8.2 : https://github.com/boot2docker/boot2docker/releases/tag/v1.8.2
+
 ## 13/08/2015
 - Moving boot2docker to 1.8.1 : https://github.com/boot2docker/boot2docker/releases/tag/v1.8.1
 
