@@ -54,7 +54,6 @@ done
 echo "/usr/local/etc/init.d/nfs-client start" | tee -a "${EXTRACT_DIR}/opt/bootlocal.sh"
 
 # Last part will need to recompile ourself xorriso since syslinux (with isohybrid) nor xorriso exists as it in TCL in 64Bits
-
 XORRISO_VERSION=1.4.0
 curl -L -o "/tmp/xorriso-${XORRISO_VERSION}.tar.gz" "http://www.gnu.org/software/xorriso/xorriso-${XORRISO_VERSION}.tar.gz"
 tar -x -z -f "/tmp/xorriso-${XORRISO_VERSION}.tar.gz" -C /tmp/
@@ -80,9 +79,8 @@ find | cpio -o -H newc | /usr/local/bin/xz -9 --format=lzma > "${NEW_ISO_DIR}/bo
 cd -
 
 # Create our new ISO in MBR-hybrid format with Xorriso
-
 /usr/local/bin/xorriso  \
-    -publisher "Damien DUPORTAL" \
+    -publisher "Alban MONTAIGU" \
     -as mkisofs \
     -l -J -R -V "Custom Boot2Docker-v$(cat ${NEW_ISO_DIR}/version)" \
     -no-emul-boot -boot-load-size 4 -boot-info-table \

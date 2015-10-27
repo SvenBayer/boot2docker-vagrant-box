@@ -1,5 +1,6 @@
-## 27/10/2015
-- Merge with dduportal (docker 1.8.2 as today)
+## 27/10/2015 (1.8.3)
+- Update to boot2docker 1.8.3 : https://github.com/boot2docker/boot2docker/releases/tag/v1.8.3
+- Merge with dduportal
 - Host only network removed
 - Keep Virtualbox only
 
