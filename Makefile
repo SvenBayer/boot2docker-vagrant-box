@@ -1,13 +1,30 @@
+BOOT2DOCKER_VERSION := 1.8.2
 
-all: clean build test
+B2D_ISO_FILE := boot2docker.iso
+B2D_ISO_URL := https://github.com/boot2docker/boot2docker/releases/download/v$(BOOT2DOCKER_VERSION)/boot2docker.iso
+B2D_ISO_CHECKSUM := 29839aeef97758e142eae4c2fd10890b
 
-build:
-	packer build -parallel=false -only=virtualbox-iso template.json
+all: virtualbox
 
-test:
+virtualbox:	clean-virtualbox build-virtualbox test-virtualbox
+
+$(B2D_ISO_FILE):
+	curl -L -o ${B2D_ISO_FILE} ${B2D_ISO_URL}
+
+$(PRL_B2D_ISO_FILE):
+	curl -L -o ${PRL_B2D_ISO_FILE} ${PRL_B2D_ISO_URL}
+
+build-virtualbox: $(B2D_ISO_FILE)
+	packer build -only=virtualbox-iso \
+		-var 'B2D_ISO_FILE=${B2D_ISO_FILE}' \
+		-var 'B2D_ISO_CHECKSUM=${B2D_ISO_CHECKSUM}' \
+		template.json
+
+clean-virtualbox:
+	rm -f *_virtualbox.box $(B2D_ISO_FILE)
+
+test-virtualbox:
 	@cd tests/virtualbox; bats --tap *.bats
 
-clean:
-	rm -rf *.iso *.box
-
-.PHONY: clean build test all
+.PHONY: all virtualbox \
+	clean-virtualbox build-virtualbox test-virtualbox \

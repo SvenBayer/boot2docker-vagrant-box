@@ -1,3 +1,7 @@
+## 27/10/2015
+- Merge with dduportal (docker 1.8.2 as today)
+- Host only network removed
+- Keep Virtualbox only
 
 ## 25/06/2015
 - Moving boot2docker to 1.7.0 : https://github.com/boot2docker/boot2docker/releases/tag/v1.7.0

@@ -1,7 +1,7 @@
 # boot2docker Vagrant Box
 
 This repository contains the scripts necessary to create a Vagrant-compatible
-[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.6. 
+[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.7.1
 
 If you work solely with Docker, this box lets you keep your Vagrant workflow and work in the most minimal Docker environment possible.
 
@@ -20,7 +20,7 @@ On OS X, to use the docker client, follow the directions here: http://docs.docke
 ## Tips & tricks
 
 * Vagrant synced folder has been tested with :
-  * vbox shared folder : This is default sharing system
+  * Shared Folder for Virtualbox and Parallels Desktop: This is default sharing system
   * [rsync](https://docs.vagrantup.com/v2/synced-folders/rsync.html) : add this line to your Vagrantfile (it will overwrite the default vboxsf sync behaviour) :
 
     ```ruby
@@ -30,6 +30,16 @@ config.vm.synced_folder ".", "/vagrant", type: "rsync"
 
     ```bash
     $ export B2D_NFS_SYNC=1
+    $ vagrant up
+    ```
+
+* Network considerations :
+  * By default, we use a NAT interfaces, which have its ports 2375 and 2376 (Docker IANA ports) forwarded to the loopback (localhost) of your physical host.
+  * Also, we provide a private network that allow direct-IP exchange from your host. This is less portable but easier to use. This usage come from the officiel docker-machine system.
+  * If you face problems (Virtualbox errors, IP overlapping, etc.) with the private network, you can disable it with an environment variable :
+
+    ```bash
+    $ export B2D_DISABLE_PRIVATE_NETWORK=1
     $ vagrant up
     ```
 
@@ -49,9 +59,18 @@ sudo /etc/init.d/docker restart
 sudo cp -r /var/lib/boot2docker/tls /vagrant/
 ```
 
-  Next, you need to configure your Docker environment :
-  * Export cert path: ```export DOCKER_CERT_PATH=<Absolute path to your vagrant share>/tls```
-  * Export Docker host path : ```export DOCKER_HOST=tcp://192.168.10.10:2376``` (You can also use localhost if the NAT is OK)
+Next, you need to configure your Docker environment :
+```
+# For VirtualBox provider:
+export DOCKER_CERT_PATH=`pwd`/tls
+export DOCKER_HOST=tcp://192.168.10.10:2376
+export DOCKER_TLS_VERIFY=1
+
+# For Parallels provider:
+export DOCKER_CERT_PATH=`pwd`/tls
+export DOCKER_HOST="tcp://`vagrant ssh-config | sed -n "s/[ ]*HostName[ ]*//gp"`:2376"
+export DOCKER_TLS_VERIFY=1
+```
 
 ## Building the Box
 
@@ -63,13 +82,18 @@ To build the box, first install the following prerequisites:
 
   * [Make as workflow engine](http://www.gnu.org/software/make/)
   * [Packer as vagrant basebox builder](http://www.packer.io) (at least version 0.7.5)
-  * [VirtualBox as main virtualization system](http://www.virtualbox.org) (at least version 4.3.28) [VMware and Parallels not implemented yet]
+  * [VirtualBox](http://www.virtualbox.org) (at least version 4.3.28) or [Parallels Desktop for Mac](http://www.parallels.com/products/desktop/) (version 9 or higher) [VMware is not implemented yet]
+  * [Parallels Virtualization SDK for Mac](http://www.parallels.com/download/pvsdk/) (only if you want to build the box for Parallels)
   * [curl for downloading things](http://curl.haxx.se)
   * [bats for testing](https://github.com/sstephenson/bats)
 
-Then follow the steps:
+Then run this command to build the box for VirtualBox provider:
 
 ```
-$ make
-...
+make virtualbox
+```
+or this one to build the box for Parallels provider:
+
+```
+make parallels
 ```
