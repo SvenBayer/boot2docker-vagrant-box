@@ -7,7 +7,7 @@ Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boo
 My fork is a simplier version (no parallels support) with my personal touch.
 
 This repository contains the scripts necessary to create a Vagrant-compatible
-[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.8.3
+[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.9.0
 
 If you work solely with Docker, this box lets you keep your Vagrant workflow and work in the most minimal Docker environment possible.
 

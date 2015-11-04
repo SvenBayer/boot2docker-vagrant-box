@@ -1,3 +1,8 @@
+# Boot2docker-vagrant-box
+
+## 27/10/2015 (1.8.3)
+- Update to boot2docker 1.9.0
+
 ## 27/10/2015 (1.8.3)
 - Update to boot2docker 1.8.3 : https://github.com/boot2docker/boot2docker/releases/tag/v1.8.3
 - Merge with dduportal
