@@ -1,6 +1,4 @@
-# Boot2docker-vagrant-box
-
-## 27/10/2015 (1.8.3)
+## 27/10/2015 (1.9.0)
 - Update to boot2docker 1.9.0
 
 ## 27/10/2015 (1.8.3)
