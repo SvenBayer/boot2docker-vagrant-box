@@ -41,7 +41,7 @@ cd -
 rm -f "${EXTRACT_DIR}/initrd.xz"
 
 # Install our custom tcz
-for TCZ_PACKAGE in popt attr acl rsync make; do
+for TCZ_PACKAGE in popt attr acl rsync make m4; do
 	curl -LO "http://tinycorelinux.net/$(version | cut -d '.' -f 1).x/x86_64/tcz/${TCZ_PACKAGE}.tcz"; \
 	mount -o loop "./${TCZ_PACKAGE}.tcz" "${MNT_TMP_DIR}"
 	cd "${MNT_TMP_DIR}"
