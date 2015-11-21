@@ -12,13 +12,23 @@ B2D_ISO_CHECKSUM := 669e0c5f2698188f0d48a2ed2a3e5218
 # Packer configuration
 PACKER_TEMPLATE := template.json
 
-all: virtualbox
+# Atlas configuration
+ATLAS_USERNAME="AlbanMontaigu"
+ATLAS_NAME="boot2docker"
 
 # -----------------------------------------------------------------------------
+# GOALS
+# -----------------------------------------------------------------------------
+
+all: virtualbox
+
+# 
 # PACKER
 # -----------------------------------------------------------------------------
 
 packer-file:
+	ATLAS_USERNAME=${ATLAS_USERNAME} \
+	ATLAS_NAME=${ATLAS_NAME} \
 	B2D_ISO_VERSION=${B2D_VERSION} \
 	B2D_ISO_URL=${B2D_ISO_URL} \
 	B2D_ISO_CHECKSUM=${B2D_ISO_CHECKSUM} \
@@ -27,7 +37,7 @@ packer-file:
 packer-validate:
 	packer validate ${PACKER_TEMPLATE}
 
-# -----------------------------------------------------------------------------
+# 
 # VIRTUALBOX
 # -----------------------------------------------------------------------------
 
@@ -42,7 +52,7 @@ $(PRL_B2D_ISO_FILE):
 virtualbox-clean:
 	rm -f *_virtualbox.box $(B2D_ISO_FILE)
 
-virtualbox-build: $(B2D_ISO_FILE)
+virtualbox-build: $(B2D_ISO_FILE) packer-file packer-validate
 	packer build -only=virtualbox-iso \
 		${PACKER_TEMPLATE}
 
@@ -51,17 +61,21 @@ atlas-destroy-version:
 		-X DELETE \
 		-d access_token='${ATLAS_TOKEN}'
 
-atlas-push:
+atlas-push: packer-file packer-validate
 	packer push \
 		-name ${ALTAS_USERNAME}/${ATLAS_NAME} \
 		${PACKER_TEMPLATE}
 
 atlas-virtualbox-test:
-	@cd tests/virtualbox; B2D_VERSION=${B2D_VERSION} bats --tap *.bats
+	@cd tests/virtualbox; \
+		ATLAS_USERNAME=${ATLAS_USERNAME} \
+		ATLAS_NAME=${ATLAS_NAME} \
+		B2D_VERSION=${B2D_VERSION} \
+		bats --tap *.bats
 
-# -----------------------------------------------------------------------------
+# 
 # PHONY
 # -----------------------------------------------------------------------------
 
 .PHONY: all virtualbox \
-	packer-file packer-validate virtualbox-clean virtualbox-build
+	virtualbox-clean virtualbox-build
