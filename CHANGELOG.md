@@ -1,5 +1,10 @@
 ## 21/11/2015 (1.9.1)
 - Update to [boot2docker 1.9.1](https://github.com/boot2docker/boot2docker/releases/tag/v1.9.1)
+- Make added
+- M4 added
+- Circle CI integration
+- Better testing
+- TCZ package integration fixed
 
 ## 04/11/2015 (1.9.0)
 - Update to [boot2docker 1.9.0](https://github.com/boot2docker/boot2docker/releases/tag/v1.9.0)
