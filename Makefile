@@ -15,7 +15,6 @@ $(PRL_B2D_ISO_FILE):
 
 build-virtualbox: $(B2D_ISO_FILE)
 	packer build -only=virtualbox-iso \
-		-name $ALTAS_USERNAME/$ATLAS_NAME \
 		-var 'B2D_ISO_VERSION=${B2D_ISO_VERSION}' \
 		-var 'B2D_ISO_URL=${B2D_ISO_URL}' \
 		-var 'B2D_ISO_CHECKSUM=${B2D_ISO_CHECKSUM}' \
