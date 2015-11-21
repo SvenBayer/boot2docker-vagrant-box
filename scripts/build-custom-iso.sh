@@ -63,16 +63,6 @@ make
 make install
 cd -
 
-# Rsync to install inside the iso
-RSYNC_VERSION=3.0.0
-curl -L -o "/tmp/rsync-${RSYNC_VERSION}.tar.gz" "https://download.samba.org/pub/rsync/src/rsync-${RSYNC_VERSION}.tar.gz"
-tar -x -z -f "/tmp/rsync-${RSYNC_VERSION}.tar.gz" -C /tmp/
-cd "/tmp/rsync-${RSYNC_VERSION}"
-./configure --prefix "${EXTRACT_DIR}"
-make
-make install
-cd -
-
 # Generate the new initrd.img in new iso dir
 cd "${EXTRACT_DIR}"
 find | cpio -o -H newc | /usr/local/bin/xz -9 --format=lzma > "${NEW_ISO_DIR}/boot/initrd.img"
