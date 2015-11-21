@@ -5,7 +5,7 @@
     },
     "variables": {
         "ATLAS_USERNAME": "{{env `ATLAS_USERNAME`}}",
-        "ATLAS_NAME": "{{env `ATLAS_NAME`}}",
+        "ATLAS_NAME": "{{env `ATLAS_NAME`}}"
     },
     "provisioners": [
         {
