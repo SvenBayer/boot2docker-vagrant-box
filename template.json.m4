@@ -5,7 +5,10 @@
     },
     "variables": {
         "ATLAS_USERNAME": "{{env `ATLAS_USERNAME`}}",
-        "ATLAS_NAME": "{{env `ATLAS_NAME`}}"
+        "ATLAS_NAME": "{{env `ATLAS_NAME`}}",
+        "B2D_ISO_VERSION": "esyscmd(echo $B2D_ISO_VERSION)",
+        "B2D_ISO_URL": "esyscmd(echo $B2D_ISO_URL)",
+        "B2D_ISO_CHECKSUM": "esyscmd(echo $B2D_ISO_CHECKSUM)"
     },
     "provisioners": [
         {
