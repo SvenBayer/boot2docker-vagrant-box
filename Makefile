@@ -36,7 +36,7 @@ test-packer:
 
 push-virtualbox:
 	packer push \
-		-name $ALTAS_USERNAME/$ATLAS_NAME \
+		-name ${ALTAS_USERNAME}/${ATLAS_NAME} \
 		${PACKER_VARS} \
 		${PACKER_TEMPLATE}
 
