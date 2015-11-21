@@ -7,6 +7,7 @@
 	# Ensure the VM is stopped
 	run vagrant stop
 	run vagrant destroy -f
+	run vagrant box remove --force --provider virtualbox --box-version ${B2D_VERSION}
 	cp vagrantfile.orig Vagrantfile
 	vagrant up --provider=virtualbox
 	[ $( vagrant status | grep 'running' | wc -l ) -ge 1 ]
