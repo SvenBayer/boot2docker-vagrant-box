@@ -66,7 +66,7 @@ DOCKER_TARGET_VERSION=${B2D_VERSION}
 }
 
 @test "We can share folder thru rsync" {
-	sed 's/#SYNC_TOKEN/config.vm.synced_folder ".", "\/vagrant", type: "rsync"/g' vagrantfile.orig > Vagrantfile
+	sed -i -e 's/#SYNC_TOKEN/config.vm.synced_folder ".", "\/vagrant", type: "rsync"/g' Vagrantfile
 	vagrant reload
 	[ $( vagrant status | grep 'running' | wc -l ) -ge 1 ]
 	vagrant ssh -c "ls -l /vagrant/Vagrantfile"
