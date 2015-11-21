@@ -26,6 +26,9 @@ clean-virtualbox:
 test-virtualbox:
 	@cd tests/virtualbox; bats --tap *.bats
 
+test-packer:
+	packer validate template.json
+
 push-virtualbox:
 	packer push \
 		-name $ALTAS_USERNAME/$ATLAS_NAME \

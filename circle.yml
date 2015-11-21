@@ -3,7 +3,7 @@ machine:
     - wget https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip -O /tmp/packer.zip && sudo unzip /tmp/packer.zip -d /usr/local/bin
 test:
   override:
-    - packer validate
+    - make test-packer
 deployment:
   production:
     branch: master
