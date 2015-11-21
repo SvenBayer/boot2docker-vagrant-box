@@ -19,7 +19,10 @@ all: virtualbox
 # -----------------------------------------------------------------------------
 
 packer-file:
-	m4 template.json.m4 > template.json
+	B2D_ISO_VERSION=${B2D_ISO_VERSION} \
+	B2D_ISO_URL=${B2D_ISO_URL} \
+	B2D_ISO_CHECKSUM=${B2D_ISO_CHECKSUM} \
+		m4 template.json.m4 > template.json
 
 packer-validate:
 	packer validate ${PACKER_TEMPLATE}
