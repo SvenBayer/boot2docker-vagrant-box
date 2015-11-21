@@ -1,4 +1,4 @@
-# boot2docker Vagrant Box
+# boot2docker Vagrant Box [![Circle CI](https://circleci.com/gh/AlbanMontaigu/docker-compose.svg?style=shield)](https://circleci.com/gh/AlbanMontaigu/boot2docker-vagrant-box)
 
 ## Introduction
 
