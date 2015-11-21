@@ -2,8 +2,5 @@ machine:
   pre:
     - wget https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip -O /tmp/packer.zip && sudo unzip /tmp/packer.zip -d /usr/local/bin
 dependencies:
-  cache_directories:
-    - vagrant
-    - ~/.vagrant.d
   override:
     - packer push -name $ALTAS_USERNAME/$ATLAS_NAME template.json
