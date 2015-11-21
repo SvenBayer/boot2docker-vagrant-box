@@ -52,6 +52,10 @@ DOCKER_TARGET_VERSION=${B2D_VERSION}
 	vagrant ssh -c "which make"
 }
 
+@test "M4 is installed inside the b2d" {
+	vagrant ssh -c "which m4"
+}
+
 @test "The NFS client is started inside the VM" {
 	[ $(vagrant ssh -c 'ps aux | grep rpc.statd | wc -l' -- -n -T) -ge 1 ]
 }
