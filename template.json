@@ -1,4 +1,4 @@
-changequote(<!,!>)
+
 {
     "push": {
       "name": "",
@@ -7,9 +7,9 @@ changequote(<!,!>)
     "variables": {
         "ATLAS_USERNAME": "{{env `ATLAS_USERNAME`}}",
         "ATLAS_NAME": "{{env `ATLAS_NAME`}}",
-        "B2D_ISO_VERSION": "esyscmd(echo -n $B2D_ISO_VERSION)",
-        "B2D_ISO_URL": "esyscmd(echo -n $B2D_ISO_URL)",
-        "B2D_ISO_CHECKSUM": "esyscmd(echo -n $B2D_ISO_CHECKSUM)"
+        "B2D_ISO_VERSION": "1.9.1",
+        "B2D_ISO_URL": "",
+        "B2D_ISO_CHECKSUM": ""
     },
     "provisioners": [
         {
