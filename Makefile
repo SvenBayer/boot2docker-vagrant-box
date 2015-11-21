@@ -41,7 +41,6 @@ virtualbox-clean:
 
 virtualbox-build: $(B2D_ISO_FILE)
 	packer build -only=virtualbox-iso \
-		${PACKER_VARS} \
 		${PACKER_TEMPLATE}
 
 virtualbox-test:
