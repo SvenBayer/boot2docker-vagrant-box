@@ -49,7 +49,12 @@ virtualbox-build: $(B2D_ISO_FILE)
 virtualbox-test:
 	@cd tests/virtualbox; B2D_VERSION=${B2D_VERSION} bats --tap *.bats
 
-virtualbox-push:
+atlas-destroy-version:
+	curl https://atlas.hashicorp.com/api/v1/box/AlbanMontaigu/boot2docker/version/${B2D_VERSION} \
+		-X DELETE \
+		-d access_token='${ATLAS_TOKEN}'
+
+atlas-push:
 	packer push \
 		-name ${ALTAS_USERNAME}/${ATLAS_NAME} \
 		${PACKER_TEMPLATE}

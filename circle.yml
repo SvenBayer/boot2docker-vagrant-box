@@ -12,4 +12,5 @@ deployment:
   production:
     branch: master
     commands:
-      - make virtualbox-push
+      - make atlas-destroy-version
+      - make atlas-push
