@@ -5,8 +5,8 @@
 
 @test "We can vagrant up the VM with basic settings" {
 	# Ensure the VM is stopped
+	run vagrant stop
 	run vagrant destroy -f
-	run vagrant box remove boot2docker-virtualbox-test
 	cp vagrantfile.orig Vagrantfile
 	vagrant up --provider=virtualbox
 	[ $( vagrant status | grep 'running' | wc -l ) -ge 1 ]
@@ -56,14 +56,6 @@ DOCKER_TARGET_VERSION=${B2D_ISO_VERSION}
 	[ $(vagrant ssh -c "ls -l ${mount_point}/Vagrantfile | wc -l" -- -n -T) -ge 1 ]
 }
 
-@test "We have a NFS synced folder if B2D_NFS_SYNC is set (admin password required, will fail on Windows)" {
-	export B2D_NFS_SYNC=1
-	vagrant reload
-	mount_point=$(vagrant ssh -c 'mount' | grep nfs | awk '{ print $3 }')
-	[ $(vagrant ssh -c "ls -l $mount_point/Vagrantfile | wc -l" -- -n -T) -ge 1 ]
-	unset B2D_NFS_SYNC
-}
-
 @test "We can share folder thru rsync" {
 	sed 's/#SYNC_TOKEN/config.vm.synced_folder ".", "\/vagrant", type: "rsync"/g' vagrantfile.orig > Vagrantfile
 	vagrant reload
@@ -75,7 +67,6 @@ DOCKER_TARGET_VERSION=${B2D_ISO_VERSION}
 	vagrant halt
 }
 
-@test "I can destroy and clean the VM" {
+@test "I can destroy the VM" {
 	vagrant destroy -f
-	vagrant box remove boot2docker-virtualbox-test
 }

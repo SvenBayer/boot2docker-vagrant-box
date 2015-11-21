@@ -5,8 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = "boot2docker-virtualbox-test"
-  config.vm.box_url = "file://../../boot2docker_virtualbox.box"
+  config.vm.box = "AlbanMontaigu/boot2docker"
+  config.vm.box_version = ENV['B2D_VERSION']
   
   #SYNC_TOKEN
 

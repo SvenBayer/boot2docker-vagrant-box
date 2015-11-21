@@ -4,9 +4,9 @@
 # -----------------------------------------------------------------------------
 
 # Boot2docker configuration
-B2D_ISO_VERSION := 1.9.1
+B2D_VERSION := 1.9.1
 B2D_ISO_FILE := boot2docker.iso
-B2D_ISO_URL := https://github.com/boot2docker/boot2docker/releases/download/v$(B2D_ISO_VERSION)/boot2docker.iso
+B2D_ISO_URL := https://github.com/boot2docker/boot2docker/releases/download/v$(B2D_VERSION)/boot2docker.iso
 B2D_ISO_CHECKSUM := 669e0c5f2698188f0d48a2ed2a3e5218
 
 # Packer configuration
@@ -19,7 +19,7 @@ all: virtualbox
 # -----------------------------------------------------------------------------
 
 packer-file:
-	B2D_ISO_VERSION=${B2D_ISO_VERSION} \
+	B2D_ISO_VERSION=${B2D_VERSION} \
 	B2D_ISO_URL=${B2D_ISO_URL} \
 	B2D_ISO_CHECKSUM=${B2D_ISO_CHECKSUM} \
 		m4 template.json.m4 > template.json
@@ -31,7 +31,7 @@ packer-validate:
 # VIRTUALBOX
 # -----------------------------------------------------------------------------
 
-virtualbox:	virtualbox-clean virtualbox-build virtualbox-test
+virtualbox:	virtualbox-clean virtualbox-build
 
 $(B2D_ISO_FILE):
 	curl -L -o ${B2D_ISO_FILE} ${B2D_ISO_URL}
@@ -47,7 +47,7 @@ virtualbox-build: $(B2D_ISO_FILE)
 		${PACKER_TEMPLATE}
 
 virtualbox-test:
-	@cd tests/virtualbox; bats --tap *.bats
+	@cd tests/virtualbox; B2D_VERSION=${B2D_VERSION} bats --tap *.bats
 
 virtualbox-push:
 	packer push \
@@ -59,4 +59,4 @@ virtualbox-push:
 # -----------------------------------------------------------------------------
 
 .PHONY: all virtualbox \
-	packer-file packer-validate virtualbox-clean virtualbox-build virtualbox-test
+	packer-file packer-validate virtualbox-clean virtualbox-build
