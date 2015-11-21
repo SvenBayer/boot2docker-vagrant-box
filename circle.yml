@@ -1,8 +1,8 @@
 machine:
   pre:
+    - wget http://download.virtualbox.org/virtualbox/5.0.10/virtualbox-5.0_5.0.10-104061~Ubuntu~precise_amd64.deb -O /tmp/virtualbox.deb &&  sudo dpkg -i /tmp/virtualbox.deb
     - wget https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip -O /tmp/packer.zip && sudo unzip /tmp/packer.zip -d /usr/local/bin
-    - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb
-    - sudo dpkg -i vagrant_1.7.4_x86_64.deb
+    - wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4_x86_64.deb -O /tmp/vagrant.deb && sudo dpkg -i /tmp/vagrant.deb
 dependencies:
   cache_directories:
     - vagrant
