@@ -7,9 +7,9 @@
     "variables": {
         "ATLAS_USERNAME": "AlbanMontaigu",
         "ATLAS_NAME": "boot2docker",
-        "B2D_ISO_VERSION": "1.10.0",
-        "B2D_ISO_URL": "https://github.com/boot2docker/boot2docker/releases/download/v1.10.0/boot2docker.iso",
-        "B2D_ISO_CHECKSUM": "50cf98a4e1dbfd4eab0251e41efb5025"
+        "B2D_ISO_VERSION": "1.10.1-rc1",
+        "B2D_ISO_URL": "https://github.com/boot2docker/boot2docker/releases/download/v1.10.1-rc1/boot2docker.iso",
+        "B2D_ISO_CHECKSUM": "a1cff91da6e88426d84bb50ce23b56b4"
     },
     "provisioners": [
         {
