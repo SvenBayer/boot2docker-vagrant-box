@@ -1,6 +1,6 @@
 
-## 2016-02-11 (1.10.1-rc1)
-- Update to [boot2docker 1.10.1](https://github.com/boot2docker/boot2docker/releases/tag/v1.10.1-rc1)
+## 2016-02-12 (1.10.1)
+- Update to [boot2docker 1.10.1](https://github.com/boot2docker/boot2docker/releases/tag/v1.10.1)
 
 ## 2016-02-05 (1.10.0)
 - Update to [boot2docker 1.10.0](https://github.com/boot2docker/boot2docker/releases/tag/v1.10.0)
