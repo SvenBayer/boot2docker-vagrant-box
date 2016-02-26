@@ -4,14 +4,7 @@
 
 Forked from [AlbanMontaigu/boot2docker-vagrant-box] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box), merci Alban !
 
-My fork adds Docker Compose to the Vagrant box. Place your docker-compose.yml next to your Vagrantfile and you can start with [vagrant up] your Docker container in a Vagrant box.
-
-Define the box in your Vagrantfile:
-config.vm.box = "sveb/boot2docker"
-
-Add configuration for Docker Compose. Due to slow file sync we have to wait 10 seconds!
-config.vm.provision "shell", inline: "sleep 10"
-config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", run: "always";
+My fork adds Docker Compose to the Vagrant box. Place your docker-compose.yml next to your Vagrantfile and you can start with *vagrant up* your Docker container in a Vagrant box.
 
 Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boot2docker-vagrant-box), thanks Damien !
 
@@ -24,10 +17,25 @@ If you work solely with Docker, this box lets you keep your Vagrant workflow and
 
 ## Usage
 
-The box is available on [Hashicrop's Atlas](https://atlas.hashicorp.com/amontaigu/boxes/boot2docker), making it very easy to use it:
+The box is available on [Hashicrop's Atlas](https://atlas.hashicorp.com/sveb/boxes/boot2docker)
 
-    $ vagrant init amontaigu/boot2docker
+### Initialise your Vagrantfile.
+
+    $ vagrant init sveb/boot2docker
+
+### Modify your Vagrantfile
+Define the box in your Vagrantfile:
+config.vm.box = "sveb/boot2docker"
+
+Add configuration for Docker Compose. Due to slow file sync we have to wait 10 seconds!
+config.vm.provision "shell", inline: "sleep 10"
+config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", run: "always";
+
+Add your Dockercompose file and start your Vagrant box.
+
     $ vagrant up
+
+# Further notes from [AlbanMontaigu] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box)
 
 If you want the actual box source file, you can download it from the [tags page](https://github.com/amontaigu/boot2docker-vagrant-box/tags).
 
