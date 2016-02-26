@@ -16,11 +16,15 @@ The box is available on [Hashicrop's Atlas](https://atlas.hashicorp.com/sveb/box
 
 ### Modify your Vagrantfile
 Define the box in your Vagrantfile:
+```bash
 config.vm.box = "sveb/boot2docker"
+```
 
 Add configuration for Docker Compose. Due to slow file sync we have to wait 10 seconds!
+```bash
 config.vm.provision "shell", inline: "sleep 10"
 config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", run: "always";
+```
 
 Add your Dockercompose file and start your Vagrant box.
 
