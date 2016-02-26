@@ -4,6 +4,15 @@
 
 Forked from [AlbanMontaigu/boot2docker-vagrant-box] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box), merci Alban !
 
+My fork adds Docker Compose to the Vagrant box. Place your docker-compose.yml next to your Vagrantfile and you can start with [vagrant up] your Docker container in a Vagrant box.
+
+Define the box in your Vagrantfile:
+config.vm.box = "sveb/boot2docker"
+
+Add configuration for Docker Compose. Due to slow file sync we have to wait 10 seconds!
+config.vm.provision "shell", inline: "sleep 10"
+config.vm.provision :docker_compose, yml: "/vagrant/docker-compose.yml", run: "always";
+
 Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boot2docker-vagrant-box), thanks Damien !
 
 My fork is a simplier version (no parallels support) with my personal touch.

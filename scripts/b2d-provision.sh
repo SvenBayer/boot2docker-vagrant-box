@@ -3,6 +3,7 @@
 set -e
 set -x
 
+B2D_DOCKER_COMPOSE_VERSION=1.6.0
 MOUNT_POINT=/mnt/data
 B2D_PERSISTENT_DIR=${MOUNT_POINT}/var/lib/boot2docker
 TMP_USERDATA_DIR=/tmp/userdata
@@ -47,5 +48,7 @@ tar cf ${B2D_PERSISTENT_DIR}/userdata.tar ./.ssh
 echo "== Customize docker daemon"
 cat <<EOF >${B2D_PERSISTENT_DIR}/profile
 # Insert custom Docker daemon settings here
-
+# Install Docker Compose
+curl -L https://github.com/docker/compose/releases/download/${B2D_DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 EOF

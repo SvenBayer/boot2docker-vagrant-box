@@ -35,6 +35,16 @@ DOCKER_TARGET_VERSION=${B2D_VERSION}
 	[ "${DOCKER_VERSION}" == "${DOCKER_TARGET_VERSION}" ]
 }
 
+@test "Docker Compose client exists in the remote VM" {
+	vagrant ssh -c 'which docker-compose'
+}
+
+DOCKER_COMPOSE_TARGET_VERSION=${B2D_DOCKER_COMPOSE_VERSION}
+@test "Docker Compose is version DOCKER_COMPOSE_TARGET_VERSION=${DOCKER_COMPOSE_TARGET_VERSION}" {
+	DOCKER_COMPOSE_VERSION=$(vagrant ssh -c "docker-compose version --short" -- -n -T)
+	[ "${DOCKER_COMPOSE_VERSION}" == "${DOCKER_COMPOSE_TARGET_VERSION}" ]
+}
+
 @test "My bootlocal.sh script, should have been run at boot" {
 	[ $(vagrant ssh -c 'grep OK /tmp/token-boot-local | wc -l' -- -n -T) -eq 1 ]
 }

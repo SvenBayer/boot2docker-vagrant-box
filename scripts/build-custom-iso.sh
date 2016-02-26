@@ -70,7 +70,7 @@ cd -
 
 # Create our new ISO in MBR-hybrid format with Xorriso
 /usr/local/bin/xorriso  \
-    -publisher "Alban MONTAIGU" \
+    -publisher "Sven Bayer" \
     -as mkisofs \
     -l -J -R -V "Custom Boot2Docker-v$(cat ${NEW_ISO_DIR}/version)" \
     -no-emul-boot -boot-load-size 4 -boot-info-table \
