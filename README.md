@@ -2,6 +2,8 @@
 
 ## Introduction
 
+Forked from [AlbanMontaigu/boot2docker-vagrant-box] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box), merci Alban !
+
 Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boot2docker-vagrant-box), thanks Damien !
 
 My fork is a simplier version (no parallels support) with my personal touch.
