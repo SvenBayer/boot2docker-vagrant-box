@@ -4,16 +4,7 @@
 
 Forked from [AlbanMontaigu/boot2docker-vagrant-box] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box), merci Alban !
 
-My fork adds Docker Compose to the Vagrant box. Place your docker-compose.yml next to your Vagrantfile and you can start with *vagrant up* your Docker container in a Vagrant box.
-
-Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boot2docker-vagrant-box), thanks Damien !
-
-My fork is a simplier version (no parallels support) with my personal touch.
-
-This repository contains the scripts necessary to create a Vagrant-compatible
-[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.10.1
-
-If you work solely with Docker, this box lets you keep your Vagrant workflow and work in the most minimal Docker environment possible.
+My fork adds Docker Compose to the Vagrant box. Place your docker-compose.yml next to your Vagrantfile and you can start with *vagrant up* your Docker container in a Vagrant box. So you will have a minimal box with Docker 1.10.1 and Docker Compose 1.6.0
 
 ## Usage
 
@@ -36,6 +27,13 @@ Add your Dockercompose file and start your Vagrant box.
     $ vagrant up
 
 # Further notes from [AlbanMontaigu] (https://github.com/AlbanMontaigu/boot2docker-vagrant-box)
+
+Forked from [dduportal/boot2docker-vagrant-box](https://github.com/dduportal/boot2docker-vagrant-box), thanks Damien !
+
+My fork is a simplier version (no parallels support) with my personal touch.
+
+This repository contains the scripts necessary to create a Vagrant-compatible
+[boot2docker](https://github.com/boot2docker/boot2docker) box and is compatible with Docker v1.10.1
 
 If you want the actual box source file, you can download it from the [tags page](https://github.com/amontaigu/boot2docker-vagrant-box/tags).
 
